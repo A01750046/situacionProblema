@@ -17,10 +17,11 @@ class Video{
         string calificacion;
         string duracion;
         string fecha;
+        string genero;
 
     public:
         Video();
-        Video(string id, string nombre, string calificacion, string duracion, string fecha);
+        Video(string id, string nombre, string calificacion, string duracion, string fecha, string genero);
         string getId();
         void setId(string id);
         string getNom();
@@ -31,7 +32,8 @@ class Video{
         void setDur(string duracion);
         string getFecha();
         void setFecha(string fecha);
-
+        string getGenero();
+        void setGenero(string genero);
     
 };
 
