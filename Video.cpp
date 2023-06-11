@@ -4,7 +4,9 @@
  * Definicion clase Video
  */
 
+#include <iostream>
 #include "Video.h"
+using namespace std;
 
 Video::Video(){
 }
@@ -12,6 +14,7 @@ Video::Video(){
 Video::Video(string id, string nombre, string calificacion, string duracion, string fecha, string genero){
     this->id = id;
     this->nombre = nombre;
+    cout<<" "<<endl;
     this->calificacion = calificacion;
     this->duracion = duracion;
     this->fecha = fecha;
@@ -26,7 +29,7 @@ void Video::setId(string id){
     this->id = id;
 }
 
-string Video::getNom(){
+string Video:: getNom(){
     return nombre;
 }
 
@@ -65,4 +68,5 @@ string Video::getGenero()
 
 void Video::setGenero(string genero)
 {
+    this->genero = genero;
 }

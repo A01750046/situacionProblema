@@ -31,9 +31,17 @@ vector<Video> Catalogo::leerArchivo(){
     {
         //cout<<(numeroLinea++)<<": "<<linea<<endl;
         vector<string> datos = separar(linea);
+        //cout<<datos[0]<<endl;
         if (datos.size() == 6)
         {
-            Pelicula p(datos[0],datos[1],datos[4],datos[2],datos[5],datos[3]);
+            string id = datos[0];
+            string nombre = datos[1];
+            string genero = datos[3];
+            string calificacion = datos[4];
+            string duracion = datos[2];
+            string fecha = datos[5];
+            
+            Pelicula p(id,nombre,calificacion,duracion,fecha,genero);
             //cout << "Película";
             videos.push_back(&p);
         }
@@ -41,12 +49,12 @@ vector<Video> Catalogo::leerArchivo(){
         {
             //cout << "Episodio";
         }
-        cout << endl<<endl;
     }
     
     entrada.close();
 
-    cout<<videos[0]->getGenero()<<endl;
+    //cout<<videos[0]->getGenero()<<endl;
+    
 
     return vector<Video>();
 }
@@ -65,14 +73,18 @@ vector<string> Catalogo::separar(string linea)
                 //cout << dato << endl;
                 tokens.push_back(dato); // Guarda en el vector
                 numeroTokens++;
+            
             }
         }
-
-        cout << "tokens: " << numeroTokens << endl;
+        //cout<<tokens[1]<<endl;
+        //cout << "tokens: " << numeroTokens << endl;
 
         return tokens;
 }
 
 void Catalogo::desplegar()
 {
+    for (int i=0;i<videos.size();i++){
+       cout<<i+1<<") "<<videos[i]->getNom()<<endl; 
+    }
 }

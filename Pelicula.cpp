@@ -4,6 +4,8 @@
  * Definicion clase Pelicula
  */
 #include "Pelicula.h"
+#include <iostream>
+using namespace std;
 
 Pelicula::Pelicula(){
 }

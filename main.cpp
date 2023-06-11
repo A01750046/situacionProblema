@@ -12,5 +12,6 @@ using namespace std;
 int main(int argc, char const *argv[]){
     Catalogo c1;
     c1.leerArchivo();
+    c1.desplegar();
 
 }
