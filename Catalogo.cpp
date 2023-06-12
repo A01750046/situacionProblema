@@ -159,3 +159,151 @@ void Catalogo::desplegarGen(string genero){
         cout <<"No se encontraron videos con este género, intenta de nuevo por favor. Prueba escribirlo sin acetos y con la primer letra mayúscula."<<endl;
     }
 }
+
+void Catalogo::desplegarEp(){
+    cout<<"Las Series disponibles son: "<<endl;
+    vector <string> series;
+    for (int i=0;i<videos.size();i++){
+        Episodio* episodio = dynamic_cast<Episodio*>(videos[i]);
+        if (episodio){
+            if (find(series.begin(),series.end(), videos[i]->getNom()) == series.end()){
+                series.push_back(videos[i]->getNom());
+            }
+            
+        }
+    }
+    for (int i = 0; i < series.size(); i++) {
+        cout << i + 1 << ") " << series[i] << endl;
+    }
+    string serie = "";
+    cout<<"Elige una Serie: ";
+    getline(std::cin, serie);
+    int contador = 1;
+    cout<<endl<<"Los episodios disponibles de la serie "<<serie<<" son: "<<endl<<endl;
+    bool encontrado = false;
+    for (int i=0;i<videos.size();i++){
+        Episodio* episodio = dynamic_cast<Episodio*>(videos[i]);
+        if (episodio){
+            if (videos[i]->getNom() == serie) {
+                encontrado = true;
+                cout<<contador++<<") Episodio: "<<episodio->getNomE()<<endl
+                <<"Duracion: "<<videos[i]->getDur()<<" minutos "<<endl
+                <<"Temporada: "<<episodio->getTemp()<<endl
+                <<"Número de episodio: "<<episodio->getNumEp()<<endl
+                <<"Fecha de estreno: "<<videos[i]->getFecha()<<endl
+                <<"Género: "<<videos[i]->getGenero()<<endl
+                <<"Calificación: "<<videos[i]->getCal()<<endl<<endl;
+            }
+        }
+    }
+    if (encontrado == false){
+        cout <<"Tecleaste el nombre de forma incorrecta o alguna serie fuera de nuestro catalogo. Intentalo nuevamante."<<endl;
+    }
+}
+
+void Catalogo::desplegarPelCal(string calificacion){
+    int contador = 1;
+    cout<<endl<<"Las películas con una calificacion mayor o igual a "<<calificacion<<" son: "<<endl<<endl;
+    for (int i=0;i<videos.size();i++){
+        if(stod(videos[i]->getCal())>=stod(calificacion)){
+            Pelicula* pelicula = dynamic_cast<Pelicula*>(videos[i]);
+            if (pelicula){
+                cout<<contador++<<") Pelicula: "<<videos[i]->getNom()<<endl
+                <<"Duracion: "<<videos[i]->getDur()<<" minutos "<<endl
+                <<"Fecha de estreno: "<<videos[i]->getFecha()<<endl
+                <<"Género: "<<videos[i]->getGenero()<<endl
+                <<"Calificación: "<<videos[i]->getCal()<<endl<<endl; 
+
+            }
+        }
+    }
+}
+
+void Catalogo::calificar(){
+    int contador = 1;
+    cout << "De los siguientes títulos, ¿cuál desas calificar?: "<<endl;
+    for (int i=0;i<videos.size();i++){
+        Pelicula* pelicula = dynamic_cast<Pelicula*>(videos[i]);
+        Episodio* episodio = dynamic_cast<Episodio*>(videos[i]);
+        if (pelicula){
+            cout<<contador++<<") Pelicula: "<<videos[i]->getNom()<<endl;
+
+        }
+        else if (episodio){
+            cout<<contador++<<") Episodio: "<<episodio->getNomE()<<endl;
+        }
+
+    }
+    string titulo = "";
+    cout<<"Tu respuesta: ";
+    getline(std::cin, titulo);
+
+    string nuevaCal = "7.1";
+    while (stod(nuevaCal)> 7||stod(nuevaCal)< 1){
+        cout<<"Calificación que se desea asignar (1-7): ";
+        cin>>nuevaCal;
+    }
+
+    bool encontrado = false;
+    for (int i=0;i<videos.size();i++){
+        if(videos[i]->getNom()==titulo){
+            encontrado = true;
+            videos[i]->setCal(nuevaCal);
+            cout<<endl<<"¡Se asigno la nueva calificacion exitosamente!"<<endl;
+            break;
+        }
+        
+    }
+    if (encontrado == false){
+        cout<<"No se encontró el título, intentelo nuevamente."<<endl;
+    }
+    
+
+
+}
+
+void Catalogo::promedioCal(){
+    cout<<"Las Series disponibles son: "<<endl;
+    vector <string> series;
+    for (int i=0;i<videos.size();i++){
+        Episodio* episodio = dynamic_cast<Episodio*>(videos[i]);
+        if (episodio){
+            if (find(series.begin(),series.end(), videos[i]->getNom()) == series.end()){
+                series.push_back(videos[i]->getNom());
+            }
+            
+        }
+    }
+    for (int i = 0; i < series.size(); i++) {
+        cout << i + 1 << ") " << series[i] << endl;
+    }
+    string serie = "";
+    cout<<"Elige una Serie: ";
+    getline(std::cin, serie);
+    int contador = 1;
+    bool encontrado = false;
+    vector <double>episodios;
+    double promedio;
+    for (int i=0;i<videos.size();i++){
+        Episodio* episodio = dynamic_cast<Episodio*>(videos[i]);
+        if (episodio){
+            if (videos[i]->getNom() == serie) {
+                encontrado = true;
+                episodios.push_back(stod(videos[i]->getCal()));
+                double suma = 0;
+                for (int i = 0; i < episodios.size(); i++) {
+                    suma += episodios[i];
+                }
+                promedio = suma/episodios.size();
+            }
+
+        }
+    }
+    if (encontrado == false){
+        cout <<"Tecleaste el nombre de forma incorrecta o alguna serie fuera de nuestro catalogo. Intentalo nuevamante."<<endl;
+    }
+    else{
+        cout<<endl<<"El promedio de la serie "<<serie<<" es: "<<promedio<<endl;
+    }
+    
+}

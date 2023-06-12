@@ -21,10 +21,10 @@ class Catalogo{
         vector<string> separar(string linea);
         void desplegarCal(string calificacion);
         void desplegarGen(string genero);
-        void desplegarEp(string serie);
+        void desplegarEp();
         void desplegarPelCal(string calificacion);
         void calificar();
-        string promedioCal(string nombre);
+        void promedioCal();
 
 
         
