@@ -7,7 +7,7 @@
 #ifndef VIDEO_H
 #define VIDEO_H
 #include <string>
-using std::string;
+using namespace std;
 
 class Video{
 
@@ -34,6 +34,7 @@ class Video{
         void setFecha(string fecha);
         string getGenero();
         void setGenero(string genero);
+        virtual void mostrar();
     
 };
 

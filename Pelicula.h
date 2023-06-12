@@ -12,6 +12,7 @@ class Pelicula: public Video{
     public:
         Pelicula();
         Pelicula(string id, string nombre, string calificacion, string duracion, string fecha, string genero);
+        void mostrar();
 };
 
 

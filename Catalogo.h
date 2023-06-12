@@ -19,7 +19,12 @@ class Catalogo{
         Catalogo(Video* p);
         vector<Video> leerArchivo();
         vector<string> separar(string linea);
-        void desplegar();
+        void desplegarCal(string calificacion);
+        void desplegarGen(string genero);
+        void desplegarEp(string serie);
+        void desplegarPelCal(string calificacion);
+        void calificar();
+        string promedioCal(string nombre);
 
 
         

@@ -5,6 +5,7 @@
  */
 
 #include <iostream>
+#include <string>
 #include "Video.h"
 using namespace std;
 
@@ -14,7 +15,6 @@ Video::Video(){
 Video::Video(string id, string nombre, string calificacion, string duracion, string fecha, string genero){
     this->id = id;
     this->nombre = nombre;
-    cout<<" "<<endl;
     this->calificacion = calificacion;
     this->duracion = duracion;
     this->fecha = fecha;
@@ -34,6 +34,7 @@ string Video:: getNom(){
 }
 
 void Video::setNom(string nombre){
+    cout<<nombre<<endl;
     this->nombre = nombre;
 }
 
@@ -61,12 +62,22 @@ void Video::setFecha(string fecha){
     this->fecha = fecha;
 }
 
-string Video::getGenero()
-{
+string Video::getGenero(){
+
+    size_t pos = genero.find('&');
+    while (pos != string::npos) {
+        genero[pos] = ',';
+        pos = genero.find('&', pos + 1);
+    }
     return genero;
 }
 
 void Video::setGenero(string genero)
 {
     this->genero = genero;
+}
+
+void Video::mostrar()
+{
+
 }
