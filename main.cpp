@@ -5,19 +5,12 @@
  */
 
 #include <iostream>
-#include "Video.h"
-#include "Catalogo.h"
+#include "Plataforma.h"
 using namespace std;
 
 int main(int argc, char const *argv[]){
-    Catalogo c1;
-    c1.leerArchivo();
-    //c1.desplegarCal("6");
-    //c1.desplegarGen("Fantasia");
-    //c1.desplegarEp();
-    //c1.desplegarPelCal("5.8");
-    //c1.calificar();
-    c1.promedioCal();
     
+    Plataforma p1;
+    p1.comenzar();
 
 }

@@ -16,8 +16,8 @@ using namespace std;
 Catalogo::Catalogo(){
 }
 
-Catalogo::Catalogo(Video *p)
-{
+Catalogo::Catalogo(Video *p){
+    videos.push_back(p);
 }
 
 vector<Video> Catalogo::leerArchivo(){
@@ -93,8 +93,7 @@ vector<string> Catalogo::separar(string linea)
         return tokens;
 }
 
-void Catalogo::desplegarCal(string calificacion)
-{
+void Catalogo::desplegarCal(string calificacion){   
     int contador = 1;
     cout<<"Los videos con una calificacion mayor o igual a "<<calificacion<<" son: "<<endl<<endl;
     for (int i=0;i<videos.size();i++){
@@ -160,24 +159,8 @@ void Catalogo::desplegarGen(string genero){
     }
 }
 
-void Catalogo::desplegarEp(){
-    cout<<"Las Series disponibles son: "<<endl;
-    vector <string> series;
-    for (int i=0;i<videos.size();i++){
-        Episodio* episodio = dynamic_cast<Episodio*>(videos[i]);
-        if (episodio){
-            if (find(series.begin(),series.end(), videos[i]->getNom()) == series.end()){
-                series.push_back(videos[i]->getNom());
-            }
-            
-        }
-    }
-    for (int i = 0; i < series.size(); i++) {
-        cout << i + 1 << ") " << series[i] << endl;
-    }
-    string serie = "";
-    cout<<"Elige una Serie: ";
-    getline(std::cin, serie);
+void Catalogo::desplegarEp(string serie){
+    
     int contador = 1;
     cout<<endl<<"Los episodios disponibles de la serie "<<serie<<" son: "<<endl<<endl;
     bool encontrado = false;
@@ -199,6 +182,7 @@ void Catalogo::desplegarEp(){
     if (encontrado == false){
         cout <<"Tecleaste el nombre de forma incorrecta o alguna serie fuera de nuestro catalogo. Intentalo nuevamante."<<endl;
     }
+
 }
 
 void Catalogo::desplegarPelCal(string calificacion){
@@ -236,7 +220,8 @@ void Catalogo::calificar(){
     }
     string titulo = "";
     cout<<"Tu respuesta: ";
-    getline(std::cin, titulo);
+    cin.ignore();
+    getline(cin, titulo);
 
     string nuevaCal = "7.1";
     while (stod(nuevaCal)> 7||stod(nuevaCal)< 1){
@@ -279,6 +264,7 @@ void Catalogo::promedioCal(){
     }
     string serie = "";
     cout<<"Elige una Serie: ";
+    cin.ignore();
     getline(std::cin, serie);
     int contador = 1;
     bool encontrado = false;
@@ -306,4 +292,21 @@ void Catalogo::promedioCal(){
         cout<<endl<<"El promedio de la serie "<<serie<<" es: "<<promedio<<endl;
     }
     
+}
+
+void Catalogo::mostrarSeries(){
+    cout<<"Las Series disponibles son: "<<endl;
+    vector <string> series;
+    for (int i=0;i<videos.size();i++){
+        Episodio* episodio = dynamic_cast<Episodio*>(videos[i]);
+        if (episodio){
+            if (find(series.begin(),series.end(), videos[i]->getNom()) == series.end()){
+                series.push_back(videos[i]->getNom());
+            }
+            
+        }
+    }
+    for (int i = 0; i < series.size(); i++) {
+        cout << i + 1 << ") " << series[i] << endl;
+    }
 }
