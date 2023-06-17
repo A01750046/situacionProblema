@@ -10,10 +10,10 @@
 
 class Plataforma{
     private:
-        Catalogo miCatalogo;
+        Catalogo c1;//Se agrega un objeto catalogo
 
     public:
-        void comenzar();
+        void comenzar();//El único método en el que se corre todo, como un menu
 
 
 };

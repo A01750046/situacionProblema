@@ -79,5 +79,19 @@ void Video::setGenero(string genero)
 
 void Video::mostrar()
 {
+    cout << "Nombre: " << getNom() << endl
+    << "Duración: " << getDur() << " minutos" << endl
+    << "Fecha de estreno: "<< getFecha()<<endl
+    << "Género: "<< getGenero()<<endl
+    << "Calificación: "<< getCal()<<endl<<endl; 
 
+}
+
+ostream& operator<<(ostream& os, Video& v) {
+    os << "Nombre: " << v.getNom() << endl;
+    os << "Duración: " << v.getDur() << " minutos" << endl;
+    os << "Fecha de estreno: "<<v.getFecha()<<endl;
+    os << "Género: "<<v.getGenero()<<endl;
+    os << "Calificación: "<<v.getCal()<<endl<<endl; 
+    return os;
 }

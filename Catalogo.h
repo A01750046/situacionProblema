@@ -13,8 +13,9 @@
 using namespace std;
 
 class Catalogo{
-    public: 
+    private:
         vector <Video*> videos;
+    public: //Se crean todos los métodos que hacen el funcionamiento principal
         Catalogo();
         Catalogo(Video* p);
         vector<Video> leerArchivo();

@@ -34,7 +34,8 @@ class Video{
         void setFecha(string fecha);
         string getGenero();
         void setGenero(string genero);
-        virtual void mostrar();
+        virtual void mostrar(); // Función virtual que se reescribirá en sus hijos
+        friend ostream& operator<<(ostream& os, Video& v);// Sobrecarga del operador "<<" para imprimir Video
     
 };
 

@@ -11,6 +11,6 @@ using namespace std;
 int main(int argc, char const *argv[]){
     
     Plataforma p1;
-    p1.comenzar();
-
+    p1.comenzar();//Sería como abrir la app del sevicio de streaming
+    
 }

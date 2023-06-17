@@ -25,6 +25,8 @@ class Episodio: public Video{
         void setTemp(string temp);
         string getNumEp();
         void setNumEp(string numEp);
+        void mostrar();
+        friend ostream& operator<<(ostream& os, Episodio& e); // Sobrecarga del operador "<<" para imprimir Episodio
 };
 
 

@@ -14,7 +14,7 @@ void Plataforma::comenzar(){
     string respuesta = "s";
     int opcion = 0;
     cout<<endl<<"BIENVENIDE A MAKOCINE"<<endl;
-    while(respuesta == "s"){
+    while(respuesta == "s"){//Hacer que corra hasta que el usuario decida salir
         cout<<endl;
         cout<<"***** MENU PRINCIPAL *****"<<endl;
         cout<<"1) Cargar el archivo"<<endl;
@@ -28,7 +28,7 @@ void Plataforma::comenzar(){
         cout<<"Elige una opción: ";
         cin>>opcion;
         cout<<endl;
-
+        //Se corre la opcion que escoge el usuario
         if (opcion==1){
             c1.leerArchivo();
             cout<<"Archivo leído exitosamente"<<endl;
@@ -48,7 +48,7 @@ void Plataforma::comenzar(){
                 string opcion3 = "";
                 cout<<"Dame una calificacion (1-7): ";
                 cin>>opcion3;
-                if (stod(opcion3)>7||stod(opcion3)<1){
+                if (stod(opcion3)>7||stod(opcion3)<1){//Se checa que este en el rango
                     cout<<"Calificación fuera de rango"<<endl;
                 }
                 else{
@@ -103,7 +103,7 @@ void Plataforma::comenzar(){
 
         if (opcion==7){
             cout<<"Ciao :)"<<endl;
-            respuesta = "n";
+            respuesta = "n";//Se sale al cambiar de s a n
             cout<<endl;
         }
     }
